@@ -3,7 +3,7 @@ const app = express();
 const db =require('./models');
 const PORT = 3000;
 app.use(express.json());
-app.use(express.urlrencoded({
+app.use(express.urlencoded({
     extended : true
 }));
 
@@ -24,4 +24,16 @@ db.sequelize.sync()
     console.log(err);
 
 })
+
+app.post("/komik",async (req,res) => {
+    const data = req.body;
+    try {
+        const komik = await db.komik.create(data);
+        res.send(komi)k;  
+    } catch (err) {
+        res.send(err);
+    }
+});
+
+
 
